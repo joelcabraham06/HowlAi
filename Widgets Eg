@@ -1,0 +1,167 @@
+{
+  "widgets": [
+    {
+      "uri": "/timetable-card",
+      "name": "Timetable Card",
+      "description": "Today's class schedule with course details and locations",
+      "examples": [
+        {
+          "name": "Today's Schedule",
+          "description": "Display today's class timetable",
+          "data": {
+            "day": "Monday",
+            "classes": [
+              {
+                "courseCode": "CS101",
+                "courseName": "Data Structures",
+                "instructor": "Dr. Rajesh Kumar",
+                "room": "301",
+                "building": "Engineering Block A",
+                "startTime": "09:00 AM",
+                "endTime": "10:30 AM",
+                "day": "Monday"
+              }
+            ],
+            "totalClasses": 1
+          }
+        }
+      ],
+      "tags": [
+        "schedule",
+        "timetable",
+        "classes"
+      ]
+    },
+    {
+      "uri": "/faculty-card",
+      "name": "Faculty Card",
+      "description": "Faculty member information with office location and contact details",
+      "examples": [
+        {
+          "name": "Faculty Details",
+          "description": "Show faculty member details",
+          "data": {
+            "faculty": {
+              "id": "fac_001",
+              "name": "Dr. Rajesh Kumar",
+              "department": "Computer Science",
+              "email": "rajesh.kumar@university.edu",
+              "phone": "+91-9876543210",
+              "office": "401",
+              "building": "Engineering Block A",
+              "floor": 4,
+              "officeHours": "Mon, Wed, Fri: 3:00 PM - 5:00 PM",
+              "specialization": [
+                "Data Structures",
+                "Algorithms"
+              ]
+            },
+            "found": true
+          }
+        }
+      ],
+      "tags": [
+        "faculty",
+        "contact",
+        "office"
+      ]
+    },
+    {
+      "uri": "/campus-map",
+      "name": "Campus Map",
+      "description": "Interactive campus navigation showing classrooms, labs, library, hostel, and canteen",
+      "examples": [
+        {
+          "name": "Library Locations",
+          "description": "Show library locations on campus",
+          "data": {
+            "destination": "library",
+            "locations": [
+              {
+                "id": "loc_003",
+                "name": "Central Library",
+                "type": "library",
+                "building": "Library Building",
+                "floor": 0,
+                "coordinates": [
+                  28.536,
+                  77.1915
+                ],
+                "description": "Main library with 500,000+ books",
+                "facilities": [
+                  "Reading Rooms",
+                  "Computer Lab",
+                  "Quiet Zone"
+                ]
+              }
+            ],
+            "totalLocations": 1
+          }
+        }
+      ],
+      "tags": [
+        "map",
+        "navigation",
+        "campus"
+      ]
+    },
+    {
+      "uri": "/study-hub",
+      "name": "Study Hub",
+      "description": "Study materials including lecture notes, past papers, and reference books",
+      "examples": [
+        {
+          "name": "CS101 Materials",
+          "description": "Show study materials for CS101",
+          "data": {
+            "courseCode": "CS101",
+            "materials": [
+              {
+                "id": "mat_001",
+                "courseCode": "CS101",
+                "courseName": "Data Structures",
+                "type": "lecture_notes",
+                "title": "Arrays and Linked Lists - Lecture Notes",
+                "author": "Dr. Rajesh Kumar",
+                "year": 2024,
+                "url": "https://university.edu/materials/cs101-lecture-01.pdf",
+                "description": "Comprehensive notes on arrays and linked lists"
+              }
+            ],
+            "totalMaterials": 1
+          }
+        }
+      ],
+      "tags": [
+        "study",
+        "materials",
+        "resources"
+      ]
+    },
+    {
+      "uri": "/cgpa-planner",
+      "name": "CGPA Planner",
+      "description": "Calculate current CGPA and predict required grades to achieve target GPA",
+      "examples": [
+        {
+          "name": "CGPA Analysis",
+          "description": "Show CGPA calculation and prediction",
+          "data": {
+            "currentCGPA": 3.47,
+            "targetGPA": 3.8,
+            "totalCredits": 11,
+            "requiredGPA": 3.92,
+            "prediction": "You need to score A- or higher in remaining courses"
+          }
+        }
+      ],
+      "tags": [
+        "cgpa",
+        "grades",
+        "planning"
+      ]
+    }
+  ],
+  "count": 5,
+  "loaded": true
+}
