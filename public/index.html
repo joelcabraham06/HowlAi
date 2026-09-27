@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HowlAI - Intelligent Node.js AI Gateway</title>
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #151c2e;
+            --accent-blue: #00f0ff;
+            --accent-purple: #7000ff;
+            --text-color: #f0f4f8;
+            --text-muted: #8a99ad;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg-color);
+            color: var(--text-color);
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+        }
+        .container { width: 100%; max-width: 900px; }
+        header { text-align: center; margin-bottom: 30px; }
+        h1 { font-size: 2.2rem; color: var(--accent-blue); margin-bottom: 8px; }
+        p.subtitle { color: var(--text-muted); font-size: 1rem; }
+        .card {
+            background: var(--card-bg);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+        }
+        label { display: block; font-weight: 600; margin-bottom: 8px; color: var(--accent-blue); }
+        textarea, input {
+            width: 100%;
+            padding: 12px;
+            background: #080b12;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            color: #fff;
+            font-family: inherit;
+            margin-bottom: 12px;
+        }
+        button {
+            padding: 12px 24px;
+            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
+            color: #fff;
+            font-weight: bold;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        button:hover { opacity: 0.9; transform: translateY(-1px); }
+        .output-box {
+            background: #05070c;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 8px;
+            padding: 14px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+            color: #00ff88;
+            min-height: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🐺 HowlAI API Gateway</h1>
+            <p class="subtitle">Node.js / Express AI Microservice Integrated with Google Gemini API</p>
+        </header>
+
+        <div class="card">
+            <label for="prompt">⚡ Prompt Generation Tester (/api/v1/ai/generate)</label>
+            <textarea id="prompt" rows="3" placeholder="Ask HowlAI anything (e.g. 'Explain how micro-kernel operating systems work')"></textarea>
+            <button onclick="runGenerate()">Execute Prompt</button>
+            <div style="margin-top: 16px;">
+                <label>API Output:</label>
+                <div id="gen_output" class="output-box">Ready to execute requests...</div>
+            </div>
+        </div>
+
+        <div class="card">
+            <label>📡 Live Server Telemetry Status</label>
+            <button onclick="checkHealth()" style="background:#151c2e; border:1px solid var(--accent-blue);">Check Telemetry & Health</button>
+            <div style="margin-top: 16px;">
+                <div id="sys_output" class="output-box">System status pending check...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        async function runGenerate() {
+            const prompt = document.getElementById('prompt').value || 'Explain how micro-kernel operating systems work';
+            const out = document.getElementById('gen_output');
+            out.textContent = 'Processing request via HowlAI Gateway...';
+
+            try {
+                const res = await fetch('/api/v1/ai/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ prompt })
+                });
+                const data = await res.json();
+                out.textContent = JSON.stringify(data, null, 2);
+            } catch (err) {
+                out.textContent = 'Error: ' + err.message;
+            }
+        }
+
+        async function checkHealth() {
+            const out = document.getElementById('sys_output');
+            try {
+                const res = await fetch('/sysinfo');
+                const data = await res.json();
+                out.textContent = JSON.stringify(data, null, 2);
+            } catch (err) {
+                out.textContent = 'Error: ' + err.message;
+            }
+        }
+
+        checkHealth();
+    </script>
+</body>
+</html>
